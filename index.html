@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Proyeccion de población municipales</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <meta name="author" content="Jair Barco - azubarco"/>
+        <meta name="description" content="Proyección población municipal Catalunya 2018 - 2033">
+        <meta name="robots" content="index,follow">
+
+        <!--Librería y hoja de estilo de mapbox -->
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script>
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css" rel="stylesheet" />
+
+        <!--Estilos-->
+        <link rel="stylesheet" href="css/estilo.css"/>
+        <!--Javascript para crear las funcionalidades del mapa y las funcionalidades del cementerio-->
+        <script src="js/map.js"></script>
+
+    </head>
+    <body onLoad="init()">
+        <div class="titulo"><h1>Proyección de población municipal 2033</h1></div>
+        <!-- <nav id="menu"></nav> -->
+        <div id="menu_options">
+            <div> Edades: </div>
+            <div>
+                <input type="radio" id="val15" name="proyeccion" value="true" checked />
+                <label for="val15">0 a 15 años</label>
+            </div>
+            <div>
+                <input type="radio" id="val15_64" name="proyeccion" value="false" />
+                <label for="val15_64">15 a 64 años</label>
+            </div>
+            <div>
+                <input type="radio" id="val_64" name="proyeccion" value="false" />
+                <label for="val_64">Mayor a 64 años</label>
+            </div>
+        </div>
+        <div id="map"></div>
+        <div id="leyenda0_15" class="leyenda">
+            <h4>Proyección de población</h4>
+            <div><span style="background-color: #db0000"></span>15.17% - 18.88%</div>
+            <div><span style="background-color: #ed432d"></span>13.46% - 15.17%</div>
+            <div><span style="background-color: #fa725a"></span>11.81% - 13.46%</div>
+            <div><span style="background-color: #ff9e8f"></span>9.68% - 11.81%</div>
+            <div><span style="background-color: #ffcccc"></span>5.66% - 9.68%</div>
+            <h5>Fuente: Idescat (base 2018)</h5>
+        </div>
+        <div id="leyenda15_64" class="leyenda" style="display: none;">
+            <h4>Proyección de población</h4>
+            <div><span style="background-color: #0000e0"></span>63.41% - 76.1%</div>
+            <div><span style="background-color: #5136eb"></span>60.71% - 63.41%</div>
+            <div><span style="background-color: #7e63f2"></span>57.56% - 60.71%</div>
+            <div><span style="background-color: #a796fa"></span>52.76% - 57.56%</div>
+            <div><span style="background-color: #ccccff"></span>41.67% - 52.76%</div>
+            <h5>Fuente: Idescat (base 2018)</h5>
+        </div>
+        <div id="leyenda64" class="leyenda" style="display: none;">
+            <h4>Proyección de población</h4>
+            <div><span style="background-color: #6b0000"></span>34.81% - 54.17%</div>
+            <div><span style="background-color: #ad5313"></span>29.67% - 34.81%</div>
+            <div><span style="background-color: #f2a72e"></span>25.88% - 29.67%</div>
+            <div><span style="background-color: #fad155"></span>22.5 % - 25.88%</div>
+            <div><span style="background-color: #ffff80"></span>12.55% - 22.5%</div>
+            <h5>Fuente: Idescat (base 2018)</h5>
+        </div>
+    </body>
+</html>
