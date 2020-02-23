@@ -17,19 +17,23 @@ function init(){
     map.addControl(new mapboxgl.NavigationControl());
     map.addControl(new mapboxgl.GeolocateControl({positionOptions:{enableHighAccuracy: true},trackUserLocation: true }));
 
+    //variable para controlar cuando nos movemos por el mapa
     var hoveredMunicipioId = null;
+
+    //variable para el popup mostrado cuando nos movemos por el mapa
     var popup = new mapboxgl.Popup({
         closeButton: false
     });
 
     map.on('load',function(){
 
+        //Agregamos los datos geojson
         map.addSource("municipios",{
             type:"geojson",
             data:'data/Municipios_pob.geojson'
         });
 
-        //15 años
+        //Agregamos el layer de los poligonos y border de 15 años
         map.addLayer({
             id:"municipios_fill",
             type:"fill",
@@ -77,7 +81,7 @@ function init(){
             }
         });
 
-        //15-64años
+        //Agregamos el layer de los poligonos y border de 16 a 64 años
         map.addLayer({
             id:"municipios_fill2",
             type:"fill",
@@ -125,7 +129,7 @@ function init(){
             }
         });
 
-        //Mayor a 64años
+        //Agregamos el layer de los poligonos y border de las edades mayores a 64 años
         map.addLayer({
             id:"municipios_fill3",
             type:"fill",
@@ -173,12 +177,12 @@ function init(){
             }
         });
 
-        //para visualizar la leyenda
+        //capturamos los elementos para visualizar la leyenda
         var leyenda15 = document.getElementById('leyenda0_15');
         var leyenda15_64 = document.getElementById('leyenda15_64');
         var leyenda64 = document.getElementById('leyenda64');
 
-        //opciones del mapa a visualizar
+        //para capturar la opcion del mapa a visualizar
         var options= document.getElementById('menu_options');
         var inputs= options.getElementsByTagName('input');
 
@@ -224,6 +228,7 @@ function init(){
             
         }
 
+        //recorre las opciones y nos envia a la funcion de la opción elegida
         for (var i=0;i<inputs.length;i++){
             inputs[i].onclick=Mostrarmapa;
         }
@@ -266,7 +271,7 @@ function init(){
             popup.remove();
         });
 
-        //Movimiento de popup edades 15 a 64 años
+        //Movimiento de popup edades 16 a 64 años
         map.on('mousemove', 'municipios_fill2', function(e) {
             map.getCanvas().style.cursor = 'pointer';
             if (e.features.length > 0) {
